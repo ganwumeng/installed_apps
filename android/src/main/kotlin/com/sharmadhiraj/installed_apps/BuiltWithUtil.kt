@@ -10,20 +10,7 @@ class BuiltWithUtil {
     companion object {
 
         fun getPlatform(applicationInfo: ApplicationInfo): String {
-            val apkPath = applicationInfo.sourceDir
-            val zipFile = ZipFile(apkPath)
-            val entries: List<String> = zipFile.entries().toList().map { entry -> entry.name }
-            return if (isFlutterApp(entries)) {
-                "flutter"
-            } else if (isReactNativeApp(entries)) {
-                "react_native"
-            } else if (isXamarinApp(entries)) {
-                "xamarin"
-            } else if (isIonicApp(entries)) {
-                "ionic"
-            } else {
-                "native_or_others"
-            }
+            return "native_or_others"
         }
 
         private fun isFlutterApp(entries: List<String>): Boolean {
